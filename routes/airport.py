@@ -52,7 +52,7 @@ class Passenger:
         logging.info("dict_P SORTED VERS {}".format(sorted_dict_P))
 
         #if value < cut_off_time then remove the key from the dictionary
-        filtered_dict = {key: value for key, value in sorted_dict_P.items() if value >= cut_off_time}
+        filtered_dict = [key for key, value in sorted_dict_P.items() if value >= cut_off_time]
 
         return filtered_dict
 
