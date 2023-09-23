@@ -41,7 +41,7 @@ def evaluate():
     incar_sorted = sorted(incar.items(), key=lambda x: x[1], reverse=True)
     profit = 0
     # Check if there are enough parking slots
-    while CarParkingSlots>0:
+    while CarParkingSlots>0 and (expected_buses>0 or expected_cars>0 or expected_bikes>0) :
         for key,value in incar_sorted:
             if key == "bike":
                 if expected_bikes>=5:
@@ -61,7 +61,8 @@ def evaluate():
                     CarParkingSlots -= 1
                     profit += value
                     break
-    while BusParkingSlots>0:
+    while BusParkingSlots>0 and (expected_buses>0 or expected_cars>0 or expected_bikes>0):
+        logger.info("BUS")
         for key,value in inbus_sorted:
             if key == "bike":
                 if expected_bikes>=12:
@@ -95,6 +96,15 @@ def evaluate():
                     BusParkingSlots -= 1
                     profit += value
                     break
+        if expected_cars >0 or expected_bikes >0:
+            carNbike = 0
+            if expected_cars ==1 and expected_bikes<7:
+                carNbike = car_charges + expected_bikes * bike_charges
+            value = max(carNbike, bike_charges*expected_bikes)
+            if expected_bikes>0:
+                expected_bikes -= 7 if value == carNbike else expected_bikes
+            expected_cars -= 1 if value == carNbike else 0
+            profit += value
 
     result["profit"] = profit
     result["rejected_buses"] = expected_buses
