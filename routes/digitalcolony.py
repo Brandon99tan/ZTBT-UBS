@@ -15,7 +15,7 @@ def evaluate():
     while counter < 50:
         counter += 1
         colony = next_generation(colony)
-        if counter == 20:
+        if counter == 10:
             answer.append(colony)
         if counter == 50:
             answer.append(colony)
