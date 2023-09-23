@@ -9,9 +9,9 @@ logger = logging.getLogger(__name__)
 def chinese_wall():
     answer={
   "1": "Fluffy",
-  "2": "Galatic",
+  "2": "Galactic",
   "3": "Mangoes",
   "4": "Subatomic",
-  "5": "Jellyfish"
+  "5": "Monkey"
     }
     return Response(json.dumps(answer), mimetype='application/json')
