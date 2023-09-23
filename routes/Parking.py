@@ -13,9 +13,9 @@ def evaluate():
     BusParkingSlots = data.get("BusParkingSlots",0)
     CarParkingSlots = data.get("CarParkingSlots",0)
     ParkingCharges = data.get("ParkingCharges",0)
-    expected_buses = data.get("Buses")
-    expected_cars = data.get("Cars")
-    expected_bikes = data.get("Bikes")
+    expected_buses = data.get("Buses") if data.get("Buses")>0 else 0
+    expected_cars = data.get("Cars") if data.get("Cars")>0 else 0
+    expected_bikes = data.get("Bikes") if data.get("Bikes")>0 else 0
     bus_charges = ParkingCharges.get("Bus")
     car_charges = ParkingCharges.get("Car")
     bike_charges = ParkingCharges.get("Bike")
