@@ -39,5 +39,5 @@ def next_generation(colony):
                 signature = 10-signature
         temp = signature+weight
         temp = temp%10
-        answer += temp
+        answer += str(temp)
     return answer
