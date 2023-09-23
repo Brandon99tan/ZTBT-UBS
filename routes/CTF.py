@@ -1,11 +1,13 @@
-from flask import jsonify, request
+from flask import jsonify, request, send_file
 import json
 import logging
 from routes import app
+
 
 logger = logging.getLogger(__name__)
 
 
 @app.route("/payload_crackme", methods=['GET'])
 def payload_crackme():
-    return json.dumps("334-12321321321")
+    return send_file('payload_crackme', as_attachment=True)
+
