@@ -28,7 +28,7 @@ def next_generation(colony):
     weight = 0
     for x in colony:
         weight += int(x)
-    logging.info("data sent for evaluation {}".format(weight))
+    # logging.info("WEight {}".format(weight))
     for x in range(len(colony)-1):
         first = colony[x]
         second = colony[x+1]
@@ -42,5 +42,5 @@ def next_generation(colony):
         temp = temp % 10
         answer += str(temp)
         answer+=colony[x+1]
-    logging.info("data sent for evaluation {}".format(answer))
+    # logging.info("Answer {}".format(answer))
     return answer
