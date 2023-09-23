@@ -31,12 +31,12 @@ def next_generation(colony):
         first = colony[x]
         second = colony[x+1]
         if first == second:
-            answer += 0
+            signature = 0
         else:
             signature = first - second
             if signature < 0:
                 signature = 10-signature
-            temp = signature+weight
-            temp = temp%10
-            answer += temp
+        temp = signature+weight
+        temp = temp%10
+        answer += temp
     return answer
