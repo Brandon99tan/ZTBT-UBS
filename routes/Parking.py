@@ -96,15 +96,17 @@ def evaluate():
                     BusParkingSlots -= 1
                     profit += value
                     break
-        if expected_cars >0 or expected_bikes >0:
-            carNbike = 0
-            if expected_cars ==1 and expected_bikes<7:
-                carNbike = car_charges + expected_bikes * bike_charges
-            value = max(carNbike, bike_charges*expected_bikes)
-            if expected_bikes>0:
-                expected_bikes -= 7 if value == carNbike else expected_bikes
-            expected_cars -= 1 if value == carNbike else 0
-            profit += value
+        if BusParkingSlots>0:
+            if expected_cars >0 or expected_bikes >0:
+                carNbike = 0
+                if expected_cars ==1 and expected_bikes<7:
+                    carNbike = car_charges + expected_bikes * bike_charges
+                value = max(carNbike, bike_charges*expected_bikes)
+                if expected_bikes>0:
+                    expected_bikes -= 7 if value == carNbike else expected_bikes
+                expected_cars -= 1 if value == carNbike else 0
+                profit += value
+                BusParkingSlots-=1
 
     result["Profit"] = profit
     result["BusRejections"] = expected_buses
