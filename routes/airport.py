@@ -33,7 +33,7 @@ class Passenger:
         print("Sequence of prioritised departure times:")
         prioritised_filtered_list = []
         for i in range(len(prioritised_and_filtered_passengers)):
-            # print(prioritised_and_filtered_passengers[i].departureTime, end=" ")
+            print(prioritised_and_filtered_passengers[i].departureTime, end=" ")
             prioritised_filtered_list.append(prioritised_and_filtered_passengers[i].departureTime)
 
         print("\n")
