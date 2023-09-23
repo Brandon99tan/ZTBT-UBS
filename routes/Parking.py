@@ -106,13 +106,13 @@ def evaluate():
             expected_cars -= 1 if value == carNbike else 0
             profit += value
 
-    result["profit"] = profit
-    result["rejected_buses"] = expected_buses
-    result["rejected_cars"] = expected_cars
-    result["rejected_bikes"] = expected_bikes
+    result["Profit"] = profit
+    result["BusRejections"] = expected_buses
+    result["CarRejections"] = expected_cars
+    result["BikeRejections"] = expected_bikes
     logger.info("My result :{}".format(inbus_sorted))
     logger.info("My result :{}".format(incar_sorted))
     answer={}
-    answer["answer"] = result
+    answer["Answer"] = result
     logger.info("My ANSSWER :{}".format(answer))
     return json.dumps(answer)
