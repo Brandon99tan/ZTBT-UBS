@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, Response
 import json
 import logging
 from routes import app
@@ -13,5 +13,5 @@ def chinese_wall():
   "3": "Mangoes",
   "4": "Subatomic",
   "5": "Jellyfish"
-}
-    return json.dumps(answer)
+    }
+    return Response(json.dumps(answer), mimetype='application/json')
