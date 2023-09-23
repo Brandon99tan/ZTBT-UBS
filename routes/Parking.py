@@ -114,4 +114,5 @@ def evaluate():
     logger.info("My result :{}".format(incar_sorted))
     answer={}
     answer["answer"] = result
+    logger.info("My ANSSWER :{}".format(answer))
     return json.dumps(answer)
