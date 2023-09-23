@@ -14,3 +14,4 @@ def chinese_wall():
   "4": "Subatomic",
   "5": "Jellyfish"
 }
+    return json.dumps(answer)
