@@ -62,14 +62,14 @@ def evaluate():
                     profit += value
                     break
     while BusParkingSlots>0 and (expected_buses>0 or expected_cars>0 or expected_bikes>0):
-        logger.info("BUS {} ".format(BusParkingSlots,profit))
+        logger.info("BUS")
         for key,value in inbus_sorted:
             if key == "bike":
                 if expected_bikes>=12:
                     expected_bikes -= 12
                     BusParkingSlots -= 1
                     profit += value
-                    logger.info("BUS bike 12 {}".format(value))
+                    logger.info("BUSBIKE")
                     break
             elif key == "car":
                 if expected_cars>=2:
@@ -91,13 +91,13 @@ def evaluate():
                     BusParkingSlots -= 1
                     profit += value
                     break
-            elif key == "bus":
+            else:
                 if expected_buses>=1:
                     expected_buses -= 1
                     BusParkingSlots -= 1
                     profit += value
                     break
-
+        if BusParkingSlots==1:
             if expected_cars >0 or expected_bikes >0:
                 carNbike = 0
                 if expected_cars ==1 and expected_bikes<7:
@@ -107,7 +107,7 @@ def evaluate():
                     expected_bikes -= 7 if value == carNbike else expected_bikes
                 expected_cars -= 1 if value == carNbike else 0
                 profit += value
-                BusParkingSlots-=1
+                BusParkingSlots -= 1
 
     result["Profit"] = profit
     result["BusRejections"] = expected_buses
