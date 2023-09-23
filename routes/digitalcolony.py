@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 @app.route('/digital-colony', endpoint='digital-colony', methods=['POST'])
 def evaluate():
     data = request.get_json()
+    # return json.dumps(next_generation(data))
     colony = data[0].get("colony")
     counter = 0
     answer=[]
