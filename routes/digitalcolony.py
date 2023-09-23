@@ -17,9 +17,9 @@ def evaluate():
         counter += 1
         colony = next_generation(colony)
         if counter == 10:
-            answer.append(colony)
+            answer.append(weight(colony))
         if counter == 50:
-            answer.append(colony)
+            answer.append(weight(colony))
     return json.dumps(answer)
 
 def next_generation(colony):
@@ -44,3 +44,8 @@ def next_generation(colony):
         answer+=colony[x+1]
     # logging.info("Answer {}".format(answer))
     return answer
+def weight(colony):
+    weight = 0
+    for x in colony:
+        weight += int(x)
+    return weight
