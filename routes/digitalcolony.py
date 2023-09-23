@@ -34,7 +34,7 @@ def next_generation(colony):
         if first == second:
             signature = 0
         else:
-            signature = first - second
+            signature = int(first) - int(second)
             if signature < 0:
                 signature = 10-signature
         temp = signature+weight
