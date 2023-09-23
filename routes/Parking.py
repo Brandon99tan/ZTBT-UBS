@@ -64,18 +64,21 @@ def evaluate():
     while BusParkingSlots>0 and (expected_buses>0 or expected_cars>0 or expected_bikes>0):
         logger.info("BUS")
         for key,value in inbus_sorted:
+            deducted = 0
             if key == "bike":
                 if expected_bikes>=12:
                     expected_bikes -= 12
                     BusParkingSlots -= 1
                     profit += value
                     logger.info("BUSBIKE")
+                    deducted = 1
                     break
             elif key == "car":
                 if expected_cars>=2:
                     expected_cars -= 2
                     BusParkingSlots -= 1
                     profit += value
+                    deducted = 1
                     break
             elif key == "car2_and_2bike":
                 if expected_cars>=2 and expected_bikes>=2:
@@ -83,6 +86,7 @@ def evaluate():
                     expected_bikes -= 2
                     BusParkingSlots -= 1
                     profit += value
+                    deducted = 1
                     break
             elif key == "_car1_and7bike":
                 if expected_cars>=1 and expected_bikes>=7:
@@ -90,14 +94,16 @@ def evaluate():
                     expected_bikes -= 7
                     BusParkingSlots -= 1
                     profit += value
+                    deducted = 1
                     break
             else:
                 if expected_buses>=1:
                     expected_buses -= 1
                     BusParkingSlots -= 1
                     profit += value
+                    deducted = 1
                     break
-        if BusParkingSlots==1:
+        if deducted ==0:
             if expected_cars >0 or expected_bikes >0:
                 carNbike = 0
                 if expected_cars ==1 and expected_bikes<7:
@@ -108,6 +114,9 @@ def evaluate():
                 expected_cars -= 1 if value == carNbike else 0
                 profit += value
                 BusParkingSlots -= 1
+            else:
+                BusParkingSlots -= 1
+
 
     result["Profit"] = profit
     result["BusRejections"] = expected_buses
